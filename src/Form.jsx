@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import data from "./data";
-
-const Form = ({ count, setCount }) => {
-  const [text, setText] = useState(data);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const tex = data.slice(0, count);
-    setText(tex);
-  };
+const Form = ({ count, setCount,handleSubmit }) => {
   return (
     <>
       <form onSubmit={handleSubmit} className="lorem-form">
@@ -15,13 +7,17 @@ const Form = ({ count, setCount }) => {
           Paragraphs
         </label>
         <input
-          type="text"
+          type="number"
+          name="count"
+          id="count"
+          min='1'
+          step='1'
+          max={8}
+          value={count}
           className="input"
           onChange={(e) => {
             setCount(e.target.value);
           }}
-          id="count"
-          value={count}
         />
         <button type="submit" className="btn">
           Generate
