@@ -1,7 +1,7 @@
 import { useState } from "react";
 import data from "./data";
 import Form from "./Form";
-
+import { nanoid } from "nanoid";
 const App = () => {
   const [text, setText] = useState([]);
   const [count, setCount] = useState(1);
@@ -15,12 +15,12 @@ const App = () => {
     <section className="section-center">
       <h4>Tired of Lorem Ipsum</h4>
       <Form count={count} setCount={setCount} handleSubmit={handleSubmit} />
-      <div className="lorem-text">
+      <article className="lorem-text">
         {text != [] &&
-          text.map((t, i) => {
-            return <p key={i}>{t}</p>;
+          text.map((t) => {
+            return <p key={nanoid()}>{t}</p>;
           })}
-      </div>
+      </article>
     </section>
   );
 };
